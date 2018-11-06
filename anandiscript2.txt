@@ -2,7 +2,7 @@
 USE anandiassign2db;
 
 # Load data into the products table
-LOAD DATA LOCAL INFILE 'products.txt' 
+LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' 
 	INTO TABLE products 
 	FIELDS TERMINATED BY ','
 ;
