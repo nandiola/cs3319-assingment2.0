@@ -22,6 +22,15 @@ CREATE TABLE products(
 
 PRIMARY KEY (product_id));
 
+CREATE TABLE agents(
+    agent_id varchar(2), 
+    firstname varchar(30), 
+    lastname varchar(30), 
+    city_located varchar(15), 
+    commission_rate DOUBLE(3,3),
+
+PRIMARY KEY (agent_id));
+
 CREATE TABLE customers(
     customer_id varchar(2), 
     firstname varchar(30), 
@@ -34,15 +43,6 @@ PRIMARY KEY (customer_id),
 
 FOREIGN KEY (agent_id) REFERENCES agents(agent_id)
 );
-
-CREATE TABLE agents(
-    agent_id varchar(2), 
-    firstname varchar(30), 
-    lastname varchar(30), 
-    city_located varchar(15), 
-    commission_rate DOUBLE(3,3),
-
-PRIMARY KEY (agent_id));
 
 CREATE TABLE customer_purchases(
     customer_purchase_key varchar(4), 
