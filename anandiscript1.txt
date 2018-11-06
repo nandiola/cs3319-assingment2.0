@@ -32,12 +32,12 @@ CREATE TABLE agents(
 PRIMARY KEY (agent_id));
 
 CREATE TABLE customers(
-    customer_id varchar(2), 
+    customer_id varchar(2),
+    agent_id varchar(30), 
     firstname varchar(30), 
     lastname varchar(30), 
     city_working varchar(15), 
     phone_number INT, 
-    agent_id varchar(30),
 
 PRIMARY KEY (customer_id),
 
