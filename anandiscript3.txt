@@ -1,35 +1,45 @@
-#Show the description of all the products
+#1.Show the description of all the products
 SELECT description FROM customers;
 
-#Show the city of all customers with no repeats
+#2.Show the city of all customers with no repeats
 SELECT DISTINCT city FROM customers; 
 
-#Show all the data in the agent table, but show them in order of their cities
+#3.Show all the data in the agent table, but show them in order of their cities
 SELECT * FROM agent ORDER BY city ASC;
 
-#Show the first and last name of all customers from Springfield
+#4.Show the first and last name of all customers from Springfield
 SELECT firstname, lastname FROM customers WHERE city = "Springfield";
 
-#List the last name of all customers who deal with Regis
+#5.List the last name of all customers who deal with Regis
 SELECT customers.lastname FROM customers INNER JOIN agents ON customer.agent_id = agents.agent_id WHERE agents.firstname = "Regis";
 
-#List the description of any product with the letters "pad" or "Pad" in the description name
+#6.List the description of any product with the letters "pad" or "Pad" in the description name
 SELECT descriptiontext FROM products WHERE descriptiontext LIKE "pad%" OR  descriptiontext LIKE "%Pad%";
 
-#For any customer who has actually purchased products, list the last name of each customer, the description of each product they have purchase and the quantity they have purchased of that product 
+#7.For any customer who has actually purchased products, list the last name of each customer, the description of each product they have purchase and the quantity they have purchased of that product 
 SELECT customers.lastname, products.descriptiontext, customer_purchases.quantity_purchased FROM (customer_purchases INNER JOIN customers ON customer_purchases.customer_id = customers.customer_id) INNER JOIN products ON customer_purchases.product_id = products.product_id;
 
-#Find the total number of products purchased by Homer. Search using his first name, not his customer id.  Just display the amount but give it a title of "Homer's Total Purchases" when the query is run. 
+#8.Find the total number of products purchased by Homer. Search using his first name, not his customer id.  Just display the amount but give it a title of "Homer's Total Purchases" when the query is run. 
 SELECT SUM(quantity_purchased) AS "Homer's Total Purchases" FROM customer_purchases INNER JOIN customers ON customer_purchases.customer_id = customers.customer_id WHERE customers.firstname = "Homer";
 
-#For any customer who has actually purchased products, find the total number of products purchased by each customer, print out the first and last name of the customer and their total number of  purchases.
+#9.For any customer who has actually purchased products, find the total number of products purchased by each customer, print out the first and last name of the customer and their total number of  purchases.
 SELECT customers.lastname, SUM(quantity_purchased) AS "Total Items Purchased" FROM customer_purchases INNER JOIN customers ON customer_purchases.customer_id = customers.customer_id GROUP BY customers.lastname;
 
-#"#List the descriptions and quantity on hand of any products that have not been purchased by anyone
+#"10.#List the descriptions and quantity on hand of any products that have not been purchased by anyone
 SELECT descriptiontext, quantity_on_hand FROM products WHERE products.product_id NOT IN (SELECT distinct product_id FROM customer_purchases);
 
-#list the description and quantity of any product that has not been purchase by Fred Flintstone (referencing his name in the query, both first and last)
+#11.list the description and quantity of any product that has not been purchase by Fred Flintstone (referencing his name in the query, both first and last)
 SELECT descriptiontext, quantity_on_hand FROM products WHERE products.product_id NOT IN (SELECT distinct customer_purchases.product_id FROM customer_purchases INNER JOIN customers ON customer_purchases.customer_id = customers.customer_id WHERE customers.lastname="Flinstone" AND customers.firstname="Fred");
 
-#List the first and last name of any agent and customer where the agent deals with a customer from the same city as the agent.
+#12.List the first and last name of any agent and customer where the agent deals with a customer from the same city as the agent.
+#not distinct
 SELECT agents.firstname, agents.lastname FROM customers INNER JOIN agents WHERE agents.city_working = customers.city_located; 
+
+#13.List the total number of knee pads that have been purchase. Give the result a nice title. 
+SELECT SUM(customer_purchases.quantity_purchased) AS "Units sold: Knee Pads" FROM customer_purchases INNER JOIN products WHERE customer_purchases.product_id = products.product_id;
+
+#"#14.Find all products  (description) which have been purchased by more than 3 customers 
+SELECT products.descriptiontext, COUNT(customer_id) AS "Number of customers who purchased this item" FROM customer_purchases INNER JOIN products ON customer_purchases.product_id = products.product_id GROUP BY customer_purchases.product_id HAVING COUNT(customer_id) > 3;
+
+#"#15.Find the first name and last name of all agents who deal with customers that have purchased knee pads.
+SELECT agents.firstname, agents.lastname FROM (agents INNER JOIN customers ON customers.agent_id = agents.agent_id ) INNER JOIN customer_purchases ON customer_purchases.customer_id = customers.customer_id WHERE customer_purchases.product_id = (SELECT product_id FROM products WHERE descriptiontext="Knee Pads");
