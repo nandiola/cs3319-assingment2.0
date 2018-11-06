@@ -13,7 +13,7 @@ USE anandiassign2db;
 #Show tables 
 SHOW TABLES;
 
---Create tables
+#Create tables
 CREATE TABLE products(
     product_id varchar(2), 
     descriptiontext varchar(20), 
