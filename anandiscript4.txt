@@ -1,0 +1,40 @@
+# Print out the tables
+SELECT * FROM agents;
+SELECT * FROM customers;
+SELECT * FROM customer_customer_purchases;
+SELECT * FROM products;
+
+# Create the view
+CREATE VIEW purchase_views AS 
+	SELECT customers.firstname, customers.lastname, 
+	products.descriptiontexttext, 
+	customer_purchases.quantity, products.cost,
+	customer_purchases.quantity * products.cost AS "Total Purchase"
+	
+	FROM products INNER JOIN (customers INNER JOIN customer_purchases ON customers.customerID = customer_purchases.customerID)
+	ON products.productID = customer_purchases.productID
+;
+
+#"#Check view
+SELECT * FROM purchase_views;
+
+# Select data from the view 
+SELECT * FROM purchase_views WHERE (quantity * cost) > 100;
+	
+# Deleting my product 	
+SELECT * FROM products; 
+
+DELETE FROM products WHERE descriptiontext = "product x";
+
+#check deletion
+SELECT * FROM products; 
+SELECT * FROM products WHERE descriptiontext = "product x";
+	
+#delete
+DELETE FROM agents WHERE city = "Springfield";
+
+#check deletion
+SELECT * FROM agents;
+SELECT * FROM agents WHERE city = "Springfield"; 
+
+# NOTE: Can't delete any agents sicne they are foreign keys in the customer table. these constraints were enforced in the first script.
