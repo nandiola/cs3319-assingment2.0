@@ -55,7 +55,7 @@ UPDATE customers
 
 UPDATE customer_purchases INNER JOIN customers 
 	ON customers.customerID = customer_purchases.customerID
-	SET customer_purchases.quantity = 5
+	SET customer_purchases.quantity_purchased = 5
 	WHERE customers.firstName = 'Sideshow';
 	
 UPDATE customers 
