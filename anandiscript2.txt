@@ -1,7 +1,7 @@
 # Use the right DB
 USE anandiassign2db;
 
-#-------------------------------------------------------------delete after
+####################################################delete after
 DELETE FROM customers;
 DELETE FROM products;
 DELETE FROM agents;
@@ -27,13 +27,13 @@ INSERT INTO agents VALUES(12, "Rosie", "Cox", "Ottawa", 50);
 INSERT INTO agents VALUES(17, "Anirudha", "Nandi", "Toronto", 100);
 
 #insert customers
-INSERT INTO customers VALUES(21, 99, "Homer", "Simpson", "Springfield", "686-8956");
-INSERT INTO customers VALUES(31, 66, "Sideshow", "Bob", "Springfield", "686-5555");
-INSERT INTO customers VALUES(12, 99, "Monty", "Burns", "Springfield", "789-0000");
-INSERT INTO customers VALUES(15, 11, "Fred", "Flintstone", "Bedrock", "777-2345");
-INSERT INTO customers VALUES(13, 33, "Super", "Man", "Krypto", "888-1234");
-INSERT INTO customers VALUES(10, 11, "Barney", "Rubble", "Bedrock", "777-1234");
-INSERT INTO customers VALUES(14, 99, "Peter", "Griffens", "Providence", "987-4567");
+INSERT INTO customers VALUES(21, 99, "Homer", "Simpson", "Springfield", "6868956");
+INSERT INTO customers VALUES(31, 66, "Sideshow", "Bob", "Springfield", "6865555");
+INSERT INTO customers VALUES(12, 99, "Monty", "Burns", "Springfield", "7890000");
+INSERT INTO customers VALUES(15, 11, "Fred", "Flintstone", "Bedrock", "7772345");
+INSERT INTO customers VALUES(13, 33, "Super", "Man", "Krypto", "8881234");
+INSERT INTO customers VALUES(10, 11, "Barney", "Rubble", "Bedrock", "7771234");
+INSERT INTO customers VALUES(14, 99, "Peter", "Griffens", "Providence", "9874567");
 
 #insert purchases
 INSERT INTO customer_purchases VALUES(21, 99, 20);
