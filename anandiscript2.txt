@@ -14,7 +14,7 @@ INSERT INTO products VALUES (42, "product x", 4.20, 420);
 #insert agents
 
 # Agents
-INSERT INTO agents VALUES(99, "Hugh", "Grant", "Springfield", 16);
+INSERT INTO agents VALUES(99, "Hugh" , "Grant", Springfield", 16);
 INSERT INTO agents VALUES(22, "Courtney", "Cox", "New York", 25);
 INSERT INTO agents VALUES(66, "Rosie", "ODonnell", "Ottawa", 100);
 INSERT INTO agents VALUES(33, "David", "Letterman", "Bedrock", 100);
@@ -32,16 +32,16 @@ INSERT INTO customers VALUES(10, 11, "Barney", "Rubble", "Bedrock", "777-1234");
 INSERT INTO customers VALUES(14, 99, "Peter", "Griffens", "Providence", "987-4567");
 
 #very purchases
-INSERT INTO purchases VALUES(21, 99, 20);
-INSERT INTO purchases VALUES(21, 12, 14);
-INSERT INTO purchases VALUES(21, 66, 10);
-INSERT INTO purchases VALUES(31, 99, 1);
-INSERT INTO purchases VALUES(31, 12, 2);
-INSERT INTO purchases VALUES(31, 78, 4);
-INSERT INTO purchases VALUES(31, 66, 2);
-INSERT INTO purchases VALUES(15, 66, 2);
-INSERT INTO purchases VALUES(15, 78, 2);
-INSERT INTO purchases VALUES(14, 66, 19);
+INSERT INTO customer_purchases VALUES(21, 99, 20);
+INSERT INTO customer_purchases VALUES(21, 12, 14);
+INSERT INTO customer_purchases VALUES(21, 66, 10);
+INSERT INTO customer_purchases VALUES(31, 99, 1);
+INSERT INTO customer_purchases VALUES(31, 12, 2);
+INSERT INTO customer_purchases VALUES(31, 78, 4);
+INSERT INTO customer_purchases VALUES(31, 66, 2);
+INSERT INTO customer_purchases VALUES(15, 66, 2);
+INSERT INTO customer_purchases VALUES(15, 78, 2);
+INSERT INTO customer_purchases VALUES(14, 66, 19);
 
 #verify insertions
 SELECT * FROM agents;

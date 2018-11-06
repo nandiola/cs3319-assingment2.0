@@ -17,7 +17,7 @@ SHOW TABLES;
 CREATE TABLE products(
     product_id varchar(2), 
     descriptiontext varchar(20), 
-    cost DOUBLE(10,2), 
+    cost DOUBLE, 
     quantity_on_hand INT, 
 
 PRIMARY KEY (product_id));
@@ -27,7 +27,7 @@ CREATE TABLE agents(
     firstname varchar(30), 
     lastname varchar(30), 
     city_located varchar(15), 
-    commission_rate DOUBLE(3,3),
+    commission_rate DOUBLE,
 
 PRIMARY KEY (agent_id));
 
@@ -45,7 +45,6 @@ FOREIGN KEY (agent_id) REFERENCES agents(agent_id)
 );
 
 CREATE TABLE customer_purchases(
-    customer_purchase_key varchar(4), 
     customer_id varchar(2), 
     product_id varchar(2), 
     quantity_purchased INT,
