@@ -33,10 +33,10 @@ SELECT * FROM products;
 SELECT * FROM products WHERE descriptiontext = "product x";
 	
 #delete
-DELETE FROM agents WHERE city = "Springfield";
+DELETE FROM agents WHERE city_working = "Springfield";
 
 #check deletion
 SELECT * FROM agents;
-SELECT * FROM agents WHERE city = "Springfield"; 
+SELECT * FROM agents WHERE city_working = "Springfield"; 
 
 # NOTE: Can't delete any agents sicne they are foreign keys in the customer table. these constraints were enforced in the first script.
