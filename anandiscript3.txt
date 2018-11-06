@@ -1,16 +1,16 @@
 use anandiassign2db;
 
 #1.Show the description of all the products
-SELECT description FROM customers;
+SELECT descriptiontext FROM products;
 
 #2.Show the city of all customers with no repeats
-SELECT DISTINCT city FROM customers; 
+SELECT DISTINCT city_located FROM customers; 
 
 #3.Show all the data in the agent table, but show them in order of their cities
-SELECT * FROM agent ORDER BY city ASC;
+SELECT * FROM agent ORDER BY city_working ASC;
 
 #4.Show the first and last name of all customers from Springfield
-SELECT firstname, lastname FROM customers WHERE city = "Springfield";
+SELECT firstname, lastname FROM customers WHERE city_located = "Springfield";
 
 #5.List the last name of all customers who deal with Regis
 SELECT customers.lastname FROM customers INNER JOIN agents ON customer.agent_id = agents.agent_id WHERE agents.firstname = "Regis";
