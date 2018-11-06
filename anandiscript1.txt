@@ -1,0 +1,56 @@
+--Show databases 
+SHOW DATABASES;
+
+--Delete database
+DROP DATABASE IF EXISTS anandiassign2db;
+
+--Create database
+CREATE DATABASE IF NOT EXISTS anandiassign2db; 
+
+--Use newly created database
+USE anandiassign2db;
+
+--Show tables 
+SHOW TABLES;
+
+--Create tables
+CREATE TABLE products(
+    product_id varchar(2), 
+    descriptiontext varchar(20), 
+    cost DOUBLE(10,2), 
+    quantity_on_hand INT, 
+    
+PRIMARY KEY (product_id));
+
+CREATE TABLE customers(
+    customer_id varchar(2), 
+    firstname varchar(30), 
+    lastname varchar(30), 
+    city_working varchar(15), 
+    phone_number INT, 
+    agent_id varchar(30),
+
+FOREIGN KEY agent_id REFERENCES agents (agent_id),
+PRIMARY KEY (customer_id));
+
+CREATE TABLE agents(
+    agent_id varchar(2), 
+    firstname varchar(30), 
+    lastname varchar(30), 
+    city_located varchar(15), 
+    commission_rate DOUBLE(3,3),
+
+PRIMARY KEY (agent_id));
+
+CREATE TABLE customer_purchases(
+    customer_purchase_key varchar(4), 
+    customer_id varchar(2), 
+    product_id varchar(2), 
+    quantity_purchased INT,
+
+FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+FOREIGN KEY (product_id) REFERENCES products(product_id),
+PRIMARY KEY (customer_purchase_key));
+
+--Show tables again
+SHOW TABLES;
