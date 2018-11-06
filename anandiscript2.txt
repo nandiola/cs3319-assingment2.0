@@ -9,7 +9,7 @@ LOAD DATA LOCAL INFILE 'loaddatafall2018.txt'
 
 #insert products 
 INSERT INTO products VALUES (66, "elbow pads", 14.25, 120);
-INSERT INTO products VALUES (420, "product x", 4.20, 420);
+INSERT INTO products VALUES (42, "product x", 4.20, 420);
 
 #insert agents
 
