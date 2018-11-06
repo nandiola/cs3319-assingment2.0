@@ -9,7 +9,7 @@ SELECT * FROM products;
 # Create the view
 CREATE VIEW purchase_views AS 
 	SELECT customers.firstname, customers.lastname, 
-	products.descriptiontexttext, 
+	products.descriptiontext, 
 	customer_purchases.quantity, products.cost,
 	customer_purchases.quantity * products.cost AS "Total Purchase"
 	
