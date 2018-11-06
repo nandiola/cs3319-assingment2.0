@@ -50,7 +50,7 @@ CREATE TABLE customer_purchases(
     product_id varchar(2), 
     quantity_purchased INT,
 
-PRIMARY KEY (customer_purchase_key),
+PRIMARY KEY (customer_id, product_id),
 
 FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
 FOREIGN KEY (product_id) REFERENCES products(product_id),
