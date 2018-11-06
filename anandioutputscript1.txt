@@ -1,0 +1,80 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+SHOW DATABASES
+--------------
+
+Database
+information_schema
+mysql
+performance_schema
+test
+--------------
+DROP DATABASE IF EXISTS anandiassign2db
+--------------
+
+--------------
+CREATE DATABASE IF NOT EXISTS anandiassign2db
+--------------
+
+--------------
+SHOW TABLES
+--------------
+
+--------------
+CREATE TABLE products(
+    product_id varchar(2), 
+    descriptiontext varchar(20), 
+    cost DOUBLE, 
+    quantity_on_hand INT, 
+
+PRIMARY KEY (product_id))
+--------------
+
+--------------
+CREATE TABLE agents(
+    agent_id varchar(2), 
+    firstname varchar(30), 
+    lastname varchar(30), 
+    city_working varchar(15), 
+    commission_rate DOUBLE,
+
+PRIMARY KEY (agent_id))
+--------------
+
+--------------
+CREATE TABLE customers(
+    customer_id varchar(2),
+    agent_id varchar(30), 
+    firstname varchar(30), 
+    lastname varchar(30), 
+    city_located varchar(15), 
+    phone_number INT, 
+
+PRIMARY KEY (customer_id),
+
+FOREIGN KEY (agent_id) REFERENCES agents(agent_id)
+)
+--------------
+
+--------------
+CREATE TABLE customer_purchases(
+    customer_id varchar(2), 
+    product_id varchar(2), 
+    quantity_purchased INT,
+
+PRIMARY KEY (customer_id, product_id),
+
+FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+FOREIGN KEY (product_id) REFERENCES products(product_id)
+)
+--------------
+
+--------------
+SHOW TABLES
+--------------
+
+Tables_in_anandiassign2db
+agents
+customer_purchases
+customers
+products

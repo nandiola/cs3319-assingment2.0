@@ -1,0 +1,184 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' 
+	INTO TABLE products 
+	FIELDS TERMINATED BY ','
+--------------
+
+--------------
+INSERT INTO products VALUES (66, "elbow pads", 14.25, 120)
+--------------
+
+--------------
+INSERT INTO products VALUES (42, "product x", 4.20, 420)
+--------------
+
+--------------
+INSERT INTO agents VALUES(99, "Hugh", "Grant", "Springfield", 16)
+--------------
+
+--------------
+INSERT INTO agents VALUES(22, "Courtney", "Cox", "New York", 25)
+--------------
+
+--------------
+INSERT INTO agents VALUES(66, "Rosie", "ODonnell", "Ottawa", 100)
+--------------
+
+--------------
+INSERT INTO agents VALUES(33, "David", "Letterman", "Bedrock", 100)
+--------------
+
+--------------
+INSERT INTO agents VALUES(11, "Regis", "Philbin", "Boston", 33)
+--------------
+
+--------------
+INSERT INTO agents VALUES(12, "Rosie", "Cox", "Ottawa", 50)
+--------------
+
+--------------
+INSERT INTO agents VALUES(17, "Anirudha", "Nandi", "Toronto", 100)
+--------------
+
+--------------
+INSERT INTO customers VALUES(21, 99, "Homer", "Simpson", "Springfield", "6868956")
+--------------
+
+--------------
+INSERT INTO customers VALUES(31, 66, "Sideshow", "Bob", "Springfield", "6865555")
+--------------
+
+--------------
+INSERT INTO customers VALUES(12, 99, "Monty", "Burns", "Springfield", "7890000")
+--------------
+
+--------------
+INSERT INTO customers VALUES(15, 11, "Fred", "Flintstone", "Bedrock", "7772345")
+--------------
+
+--------------
+INSERT INTO customers VALUES(13, 33, "Super", "Man", "Krypto", "8881234")
+--------------
+
+--------------
+INSERT INTO customers VALUES(10, 11, "Barney", "Rubble", "Bedrock", "7771234")
+--------------
+
+--------------
+INSERT INTO customers VALUES(14, 99, "Peter", "Griffens", "Providence", "9874567")
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(21, 99, 20)
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(21, 12, 14)
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(21, 66, 10)
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(31, 99, 1)
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(31, 12, 2)
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(31, 78, 4)
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(31, 66, 2)
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(15, 66, 2)
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(15, 78, 2)
+--------------
+
+--------------
+INSERT INTO customer_purchases VALUES(14, 66, 19)
+--------------
+
+--------------
+SELECT * FROM products
+--------------
+
+product_id	descriptiontext	cost	quantity_on_hand
+11	Bike	150	200
+12	Socks	2	100
+42	product x	4.2	420
+66	elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+SELECT * FROM agents
+--------------
+
+agent_id	firstname	lastname	city_working	commission_rate
+11	Regis	Philbin	Boston	33
+12	Rosie	Cox	Ottawa	50
+17	Anirudha	Nandi	Toronto	100
+22	Courtney	Cox	New York	25
+33	David	Letterman	Bedrock	100
+66	Rosie	ODonnell	Ottawa	100
+99	Hugh	Grant	Springfield	16
+--------------
+SELECT * FROM customers
+--------------
+
+customer_id	agent_id	firstname	lastname	city_located	phone_number
+10	11	Barney	Rubble	Bedrock	7771234
+12	99	Monty	Burns	Springfield	7890000
+13	33	Super	Man	Krypto	8881234
+14	99	Peter	Griffens	Providence	9874567
+15	11	Fred	Flintstone	Bedrock	7772345
+21	99	Homer	Simpson	Springfield	6868956
+31	66	Sideshow	Bob	Springfield	6865555
+--------------
+SELECT * FROM customer_purchases
+--------------
+
+customer_id	product_id	quantity_purchased
+14	66	19
+15	66	2
+15	78	2
+21	12	14
+21	66	10
+21	99	20
+31	12	2
+31	66	2
+31	78	4
+31	99	1
+--------------
+UPDATE customers 
+	SET firstName = 'Wonder', lastName = 'Woman'  
+	WHERE (firstname = 'Super' AND lastname = 'Man')
+--------------
+
+--------------
+UPDATE customer_purchases INNER JOIN customers 
+	ON customers.customer_id = customer_purchases.customer_id
+	SET customer_purchases.quantity_purchased = 5
+	WHERE customers.firstname = 'Sideshow'
+--------------
+
+--------------
+UPDATE customers 
+	SET city =ERROR 1054 (42S22) at line 61: Unknown column 'city' in 'field list'
+ 'Boston' 
+	WHERE agent_id =  (
+	SELECT agent_id FROM agents WHERE firstName = 'Regis'
+)
+--------------
+

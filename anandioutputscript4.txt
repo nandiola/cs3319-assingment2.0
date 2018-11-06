@@ -1,0 +1,121 @@
+Warning: Using a password on the command line interface can be insecure.
+ERROR 1451 (23000) at line 36: Cannot delete or update a parent row: a foreign key constraint fails (`anandiassign2db`.`customers`, CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`agent_id`) REFERENCES `agents` (`agent_id`))
+--------------
+SELECT * FROM agents
+--------------
+
+agent_id	firstname	lastname	city_working	commission_rate
+11	Regis	Philbin	Boston	33
+12	Rosie	Cox	Ottawa	50
+17	Anirudha	Nandi	Toronto	100
+22	Courtney	Cox	New York	25
+33	David	Letterman	Bedrock	100
+66	Rosie	ODonnell	Ottawa	100
+99	Hugh	Grant	Springfield	16
+--------------
+SELECT * FROM customers
+--------------
+
+customer_id	agent_id	firstname	lastname	city_located	phone_number
+10	11	Barney	Rubble	Bedrock	7771234
+12	99	Monty	Burns	Springfield	7890000
+13	33	Wonder	Woman	Krypto	8881234
+14	99	Peter	Griffens	Providence	9874567
+15	11	Fred	Flintstone	Bedrock	7772345
+21	99	Homer	Simpson	Springfield	6868956
+31	66	Sideshow	Bob	Springfield	6865555
+--------------
+SELECT * FROM customer_purchases
+--------------
+
+customer_id	product_id	quantity_purchased
+14	66	19
+15	66	2
+15	78	2
+21	12	14
+21	66	10
+21	99	20
+31	12	5
+31	66	5
+31	78	5
+31	99	5
+--------------
+SELECT * FROM products
+--------------
+
+product_id	descriptiontext	cost	quantity_on_hand
+11	Bike	150	200
+12	Socks	2	100
+66	elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+CREATE VIEW purchase_views AS 
+	SELECT customers.firstname, customers.lastname, 
+	products.descriptiontext, 
+	customer_purchases.quantity_purchased, products.cost,
+	customer_purchases.quantity_purchased * products.cost AS "Total Purchase"
+	
+	FROM products INNER JOIN (customers INNER JOIN customer_purchases ON customers.customer_id = customer_purchases.customer_id)
+	ON products.product_id = customer_purchases.product_id
+--------------
+
+--------------
+SELECT * FROM purchase_views
+--------------
+
+firstname	lastname	descriptiontext	quantity_purchased	cost	Total Purchase
+Homer	Simpson	Socks	14	2	28
+Sideshow	Bob	Socks	5	2	10
+Peter	Griffens	elbow pads	19	14.25	270.75
+Fred	Flintstone	elbow pads	2	14.25	28.5
+Homer	Simpson	elbow pads	10	14.25	142.5
+Sideshow	Bob	elbow pads	5	14.25	71.25
+Fred	Flintstone	Knee Pads	2	12.15	24.3
+Sideshow	Bob	Knee Pads	5	12.15	60.75
+Homer	Simpson	Helmet	20	29	580
+Sideshow	Bob	Helmet	5	29	145
+--------------
+SELECT * FROM purchase_views WHERE (quantity_purchased * cost) > 100
+--------------
+
+firstname	lastname	descriptiontext	quantity_purchased	cost	Total Purchase
+Peter	Griffens	elbow pads	19	14.25	270.75
+Homer	Simpson	elbow pads	10	14.25	142.5
+Homer	Simpson	Helmet	20	29	580
+Sideshow	Bob	Helmet	5	29	145
+--------------
+SELECT * FROM products
+--------------
+
+product_id	descriptiontext	cost	quantity_on_hand
+11	Bike	150	200
+12	Socks	2	100
+66	elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+DELETE FROM products WHERE descriptiontext = "product x"
+--------------
+
+--------------
+SELECT * FROM products
+--------------
+
+product_id	descriptiontext	cost	quantity_on_hand
+11	Bike	150	200
+12	Socks	2	100
+66	elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+SELECT * FROM products WHERE descriptiontext = "product x"
+--------------
+
+--------------
+DELETE FROM agents WHERE city_working = "Springfield"
+--------------
+
