@@ -1,0 +1,49 @@
+# Use the right DB
+USE anandiassign2db;
+
+# Load data into the products table
+LOAD DATA LOCAL INFILE 'products.txt' 
+	INTO TABLE products 
+	FIELDS TERMINATED BY ','
+;
+
+#insert products 
+INSERT INTO products VALUES (66, "elbow pads", 14.25, 120);
+INSERT INTO products VALUES (420, "product of my choice", 4.20, 420);
+
+#insert agents
+
+# Agents
+INSERT INTO agents VALUES(99, "Hugh", "Grant", "Springfield", 16);
+INSERT INTO agents VALUES(22, "Courtney", "Cox", "New York", 25);
+INSERT INTO agents VALUES(66, "Rosie", "ODonnell", "Ottawa", 100);
+INSERT INTO agents VALUES(33, "David", "Letterman", "Bedrock", 100);
+INSERT INTO agents VALUES(11, "Regis", "Philbin", "Boston", 33);
+INSERT INTO agents VALUES(12, "Rosie", "Cox", "Ottawa", 50);
+INSERT INTO agents VALUES(17, "Anirudha", "Nandi", "Toronto", 100);
+
+# Customers
+INSERT INTO customers VALUES(21, 99, "Homer", "Simpson", "Springfield", "686-8956");
+INSERT INTO customers VALUES(31, 66, "Sideshow", "Bob", "Springfield", "686-5555");
+INSERT INTO customers VALUES(12, 99, "Monty", "Burns", "Springfield", "789-0000");
+INSERT INTO customers VALUES(15, 11, "Fred", "Flintstone", "Bedrock", "777-2345");
+INSERT INTO customers VALUES(13, 33, "Super", "Man", "Krypto", "888-1234");
+INSERT INTO customers VALUES(10, 11, "Barney", "Rubble", "Bedrock", "777-1234");
+INSERT INTO customers VALUES(14, 99, "Peter", "Griffens", "Providence", "987-4567");
+
+#very purchases
+INSERT INTO purchases VALUES(21, 99, 20);
+INSERT INTO purchases VALUES(21, 12, 14);
+INSERT INTO purchases VALUES(21, 66, 10);
+INSERT INTO purchases VALUES(31, 99, 1);
+INSERT INTO purchases VALUES(31, 12, 2);
+INSERT INTO purchases VALUES(31, 78, 4);
+INSERT INTO purchases VALUES(31, 66, 2);
+INSERT INTO purchases VALUES(15, 66, 2);
+INSERT INTO purchases VALUES(15, 78, 2);
+INSERT INTO purchases VALUES(14, 66, 19);
+
+#verify insertions
+SELECT * FROM agents;
+SELECT * FROM customers;
+SELECT * FROM purchases;
