@@ -1,11 +1,6 @@
 # Use the right DB
 USE anandiassign2db;
 
-####################################################delete after
-DELETE FROM customers;
-DELETE FROM products;
-DELETE FROM agents;
-DELETE FROM customer_purchases;
 
 # Load data into the products table
 LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' 
