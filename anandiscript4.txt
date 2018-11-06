@@ -21,7 +21,7 @@ CREATE VIEW purchase_views AS
 SELECT * FROM purchase_views;
 
 # Select data from the view 
-SELECT * FROM purchase_views WHERE (quantity * cost) > 100;
+SELECT * FROM purchase_views WHERE (quantity_purchased * cost) > 100;
 	
 # Deleting my product 	
 SELECT * FROM products; 
