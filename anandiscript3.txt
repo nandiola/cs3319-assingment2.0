@@ -7,7 +7,7 @@ SELECT descriptiontext FROM products;
 SELECT DISTINCT city_located FROM customers; 
 
 #3.Show all the data in the agent table, but show them in order of their cities
-SELECT * FROM agent ORDER BY city_working ASC;
+SELECT * FROM agents ORDER BY city_working ASC;
 
 #4.Show the first and last name of all customers from Springfield
 SELECT firstname, lastname FROM customers WHERE city_located = "Springfield";
