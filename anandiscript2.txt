@@ -14,7 +14,7 @@ INSERT INTO products VALUES (42, "product x", 4.20, 420);
 #insert agents
 
 # Agents
-INSERT INTO agents VALUES(99, "Hugh" , "Grant", Springfield", 16);
+INSERT INTO agents VALUES(99, "Hugh", "Grant", "Springfield", 16);
 INSERT INTO agents VALUES(22, "Courtney", "Cox", "New York", 25);
 INSERT INTO agents VALUES(66, "Rosie", "ODonnell", "Ottawa", 100);
 INSERT INTO agents VALUES(33, "David", "Letterman", "Bedrock", 100);
