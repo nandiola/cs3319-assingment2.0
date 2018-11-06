@@ -30,8 +30,10 @@ CREATE TABLE customers(
     phone_number INT, 
     agent_id varchar(30),
 
-FOREIGN KEY agent_id REFERENCES agents (agent_id),
-PRIMARY KEY (customer_id));
+PRIMARY KEY (customer_id),
+
+FOREIGN KEY (agent_id) REFERENCES agents(agent_id)
+);
 
 CREATE TABLE agents(
     agent_id varchar(2), 
@@ -48,9 +50,11 @@ CREATE TABLE customer_purchases(
     product_id varchar(2), 
     quantity_purchased INT,
 
+PRIMARY KEY (customer_purchase_key),
+
 FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
 FOREIGN KEY (product_id) REFERENCES products(product_id),
-PRIMARY KEY (customer_purchase_key));
+);
 
 #Show tables again
 SHOW TABLES;
