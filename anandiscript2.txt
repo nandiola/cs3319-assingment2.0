@@ -48,6 +48,30 @@ INSERT INTO customer_purchases VALUES(15, 78, 2);
 INSERT INTO customer_purchases VALUES(14, 66, 19);
 
 #verify insertions
+SELECT * FROM products;
 SELECT * FROM agents;
 SELECT * FROM customers;
-SELECT * FROM purchases;
+SELECT * FROM customer_purchases;
+
+# Update Queries
+UPDATE customers 
+	SET firstName = 'Wonder', lastName = 'Woman'  
+	WHERE (firstName = 'Super' AND lastName = 'Man');
+
+UPDATE customer_purchases INNER JOIN customers 
+	ON customers.customerID = customer_purchases.customerID
+	SET customer_purchases.quantity = 5
+	WHERE customers.firstName = 'Sideshow';
+	
+UPDATE customers 
+	SET city = 'Boston' 
+	WHERE agentID =  (
+	SELECT agentID FROM agents WHERE firstName = 'Regis'
+);
+
+
+# Print out the DB
+SELECT * FROM products;
+SELECT * FROM agents;
+SELECT * FROM customers;
+SELECT * FROM customer_purchases;
