@@ -51,17 +51,17 @@ SELECT * FROM customer_purchases;
 # Update Queries
 UPDATE customers 
 	SET firstName = 'Wonder', lastName = 'Woman'  
-	WHERE (firstName = 'Super' AND lastName = 'Man');
+	WHERE (firstname = 'Super' AND lastname = 'Man');
 
 UPDATE customer_purchases INNER JOIN customers 
-	ON customers.customerID = customer_purchases.customerID
+	ON customers.customer_id = customer_purchases.customer_id
 	SET customer_purchases.quantity_purchased = 5
-	WHERE customers.firstName = 'Sideshow';
+	WHERE customers.firstname = 'Sideshow';
 	
 UPDATE customers 
 	SET city = 'Boston' 
-	WHERE agentID =  (
-	SELECT agentID FROM agents WHERE firstName = 'Regis'
+	WHERE agent_id =  (
+	SELECT agent_id FROM agents WHERE firstName = 'Regis'
 );
 
 
