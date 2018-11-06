@@ -10,8 +10,8 @@ SELECT * FROM products;
 CREATE VIEW purchase_views AS 
 	SELECT customers.firstname, customers.lastname, 
 	products.descriptiontext, 
-	customer_purchases.quantity, products.cost,
-	customer_purchases.quantity * products.cost AS "Total Purchase"
+	customer_purchases.quantity_on_hand, products.cost,
+	customer_purchases.quantity_on_hand * products.cost AS "Total Purchase"
 	
 	FROM products INNER JOIN (customers INNER JOIN customer_purchases ON customers.customerID = customer_purchases.customerID)
 	ON products.productID = customer_purchases.productID
