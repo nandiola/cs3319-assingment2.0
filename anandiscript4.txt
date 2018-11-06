@@ -3,7 +3,7 @@ use anandiassign2db;
 # Print out the tables
 SELECT * FROM agents;
 SELECT * FROM customers;
-SELECT * FROM customer_customer_purchases;
+SELECT * FROM customer_purchases;
 SELECT * FROM products;
 
 # Create the view
