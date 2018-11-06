@@ -1,16 +1,16 @@
---Show databases 
+#Show databases 
 SHOW DATABASES;
 
---Delete database
+#Delete database
 DROP DATABASE IF EXISTS anandiassign2db;
 
---Create database
+#Create databases
 CREATE DATABASE IF NOT EXISTS anandiassign2db; 
 
---Use newly created database
+#Use newly created database
 USE anandiassign2db;
 
---Show tables 
+#Show tables 
 SHOW TABLES;
 
 --Create tables
@@ -19,7 +19,7 @@ CREATE TABLE products(
     descriptiontext varchar(20), 
     cost DOUBLE(10,2), 
     quantity_on_hand INT, 
-    
+
 PRIMARY KEY (product_id));
 
 CREATE TABLE customers(
@@ -52,5 +52,5 @@ FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
 FOREIGN KEY (product_id) REFERENCES products(product_id),
 PRIMARY KEY (customer_purchase_key));
 
---Show tables again
+#Show tables again
 SHOW TABLES;
